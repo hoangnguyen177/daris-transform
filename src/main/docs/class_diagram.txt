@@ -1,0 +1,59 @@
+The design follows abstract factory pattern.
+
+1. The abstract classes:
+
+  1.1. Abstract Product Class: TransformDefinition
+    - The class is a factory product class in the abstract factory pattern. It defines:
+      - the type of the transform
+      - the parameters supported
+
+  1.2. Abstract Product Class: Transform
+    - The class is a factory product class in the abstract factory pattern. It defines:
+      - reference to a TransformDefinition
+      - the values for the parameters defined in the TransformDefinition
+      - abstract methods to be implemented by its sub-classes to execute and manage the transform: execute(), terminate(), suspend(), resume(), updateStatus()
+
+  1.3. Abstract Factory Class: TransformProvider 
+    - The class is the abstract factory, which creates and instantiates TransformDefinition and Transform objects. It defines following abstract methods:
+      - createTransformDefinition(TransformDefinition.Arguments args)
+      - createTransform(Transform.Arguments args)
+      - instantiateTransformDefinition(XmlDoc.Elment ae)
+      - instantiateTransform(XmlDoc.Element ae)
+    - It is also the registry of the concrete transform providers. It has static methods to manage the concrete transform providers:
+      - get(String type): returns the TransformProvider for the specified type of Transform.
+      - add(TransformProvider tp): registers the TransformProvider.
+      - types(): returns the list of transform types supported by the registered transform providers.
+
+2. The concrete implementation for Kepler
+  2.1. Concrete Product Class: KeplerTransformDefinition
+    - extends TransformDefinition
+    - The concrete product in the abstract factory pattern
+    - The class implements the functions to import from a Kepler workflow into a TransformDefinition object.
+
+  2.2. Concrete Product Class: KeplerTransform
+    - extends Transform
+    - The concrete product in the abstract factory pattern
+    - The class includes the functions to load the Kepler workflow from the TransformDefinition and merge it with the specified parameter values to build a new workflow for execution.
+    - The class implements the abstract methods in Transform class to execute and manage the transform on Kepler.
+
+  2.3. Concrete Factory Class: KeplerTransformProvider
+    - extends TransformProvider
+    - The concrete factory in the abstract factory pattern.
+    - The class implements the abstract methods to create KeplerTransformDefinition and KeplerTransform.
+
+3. The concrete implementation for local execution (local process).
+  3.1 Concrete Product Class: ExecTransformDefinition
+    - extends TransformDefinition
+    - The concrete product in the abstract factory pattern
+
+  3.2. Concrete Product Class: ExecTransform
+    - extends Transform
+    - The concrete product in the abstract factory pattern
+
+  3.3. Concrete Factory Class: ExecTransformProvider
+    - extends TransformProvider
+    - The concrete factory in the abstract factory pattern.
+
+
+
+

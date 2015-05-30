@@ -1,0 +1,38 @@
+Changes and enhancements:
+   1) Added 
+       transform.provider.user.settings.set
+       transform.provider.user.settings.get
+       transform.provider.user.settings.definition.get 
+   services to set or get user specific settings for a transform provider. These services are to replace the transform.kepler.server.settings.set service as they should not appear in a generic framework. The command below is to set the remote kepler server:
+       transform.provider.user.settings.set :type kepler \
+                                     :settings < \
+                                         :kepler.server < \
+                                             :host edward.hpc.unimelb.edu.au \
+                                             :launcher-service -name secure.shell.execute < \
+                                                 :args < \
+                                                     :host edward.hpc.unimelb.edu.au \
+                                                     :user  < :name wliu5 :password XXXXXX > \
+                                                     :command "/data/project2/pMelb0036/GWAS/Kepler/applications/kepler-2.4/keplernk.sh --single" \
+                                                 > \
+                                                 :port-xpath stdout \
+                                             > \
+                                         > \
+                                     >
+    The new service transform.provider.user.settings.definition.get returns the XML definition about the provider settings. When using transform.provider.user.settings.set service, the input xml will be validated using the definition.
+    2) Added 
+        transform.progress-detail.set
+        transform.progress-detail.get 
+    services to set or get the detail of the transform progress. The progress-detail can be arbitrary XML. These are to replace transform.kepler.progress.set/set services as they should not appear in the generic framework. To set the kepler workflow progress, you can use the following command:
+        transform.progress-detail.set :uid 16 \ 
+                                      :progress-detail < \
+                                          :actor -name actor1 < :active 1 :total 10 > \
+                                          :actor -name actor2 < :active 6 :total 10 > \
+                                      >
+    3) Uses AtomicTransaction when creating transform definitions and transforms. This will make sure there will not be invalid/incomplete object created when there is any exception during creation.
+
+    4) Server dependency is increased to 3.8.049.
+    
+    5) Increased the package version to 1.2.02.
+
+Bug fixes:
+    1) Enables replace-all-meta to fix the updating problem on the elements with attributes.
