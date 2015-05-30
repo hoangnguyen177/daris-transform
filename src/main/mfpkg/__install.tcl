@@ -1,15 +1,9 @@
-# remove old version package
-if { [xvalue exists [package.exists :package Transform]] == "true" } {
-    if { [xvalue package/vendorurl [package.describe :package Transform]] == "http://www.neuroimaging.org.au" } {
-	package.uninstall :package Transform
-    }
-}
-
+source old-release-cleanup.tcl
 
 set plugin_label      [string toupper PACKAGE_$package]
 set plugin_namespace  mflux/plugins
-set plugin_zip        transform-plugin.zip
-set plugin_jar        transform-plugin.jar
+set plugin_zip        daris-transform-plugin.zip
+set plugin_jar        daris-transform-plugin.jar
 set module_class      transform.TransformPluginModule
 
 # prune the asset
