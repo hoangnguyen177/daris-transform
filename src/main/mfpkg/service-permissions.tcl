@@ -31,3 +31,8 @@ actor.grant :type plugin:service :role -type role service-user :name transform.s
 actor.grant :type plugin:service :role -type role service-user :name transform.terminate
 actor.grant :type plugin:service :role -type role service-user :name transform.type.list
 actor.grant :type plugin:service :role -type role service-user :name transform.update
+
+if { [xvalue exists [authorization.role.namespace.exists :namespace daris]] == "true" } {
+    actor.grant :type plugin:service :name transform.create :perm < :resource -type role:namespace daris: :access ADMINISTER >
+    actor.grant :type plugin:service :name transform.execute :perm < :resource -type role:namespace daris: :access ADMINISTER >
+}
