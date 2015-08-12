@@ -14,10 +14,10 @@ public class SecureIdentityToken {
         // dm.add("app", Application.NAME);
         
         // Work around below bug
-        Collection<String> roles = roles (executor);
-        for (String role : roles) {
-        	dm.add("role",  new String[] { "type", "role" }, role);
-        }
+        // Collection<String> roles = roles (executor);
+        // for (String role : roles) {
+        // dm.add("role", new String[] { "type", "role" }, role);
+        // }
 
         dm.add("role", new String[] { "type", "user" }, User.self().actorName());
         String token = executor.execute("secure.identity.token.create", dm.root()).value("token");
