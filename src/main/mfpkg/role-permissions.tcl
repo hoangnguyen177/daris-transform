@@ -11,9 +11,9 @@ actor.grant :type role :name transform.user :perm < :resource -type document tra
 actor.grant :type role :name transform.user :perm < :resource -type document transform:transform :access PUBLISH >
 actor.grant :type role :name transform.user :perm < :resource -type service transform.* :access ACCESS >
 actor.grant :type role :name transform.user :perm < :resource -type service transform.* :access MODIFY >
-if { [xvalue exists [authorization.role.namespace.exists :namespace daris]] == "true" } {
-    actor.grant :type role :name transform.user :perm < :resource -type role:namespace daris: :access ADMINISTER >
-}
+#if { [xvalue exists [authorization.role.namespace.exists :namespace daris]] == "true" } {
+#    actor.grant :type role :name transform.user :perm < :resource -type role:namespace daris: :access ADMINISTER >
+#}
 
 # permissions for role: transform.developer
 actor.grant :type role :name transform.user :perm < :resource -type document transform:transform-definition :access PUBLISH >
