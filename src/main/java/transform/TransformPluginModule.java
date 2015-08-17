@@ -15,6 +15,7 @@ import transform.services.SvcTransformDefinitionList;
 import transform.services.SvcTransformDefinitionUpdate;
 import transform.services.SvcTransformDescribe;
 import transform.services.SvcTransformDestroy;
+import transform.services.SvcTransformDestroyAll;
 import transform.services.SvcTransformExecute;
 import transform.services.SvcTransformList;
 import transform.services.SvcTransformLog;
@@ -79,6 +80,7 @@ public class TransformPluginModule implements PluginModule {
         _services.add(new SvcTransformDefinitionUpdate());
         _services.add(new SvcTransformDescribe());
         _services.add(new SvcTransformDestroy());
+        _services.add(new SvcTransformDestroyAll());
         _services.add(new SvcTransformExecute());
         _services.add(new SvcTransformProgressDetailGet());
         _services.add(new SvcTransformProgressDetailSet());

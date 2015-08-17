@@ -6,6 +6,7 @@ actor.grant :type plugin:service :role -type role service-user :name transform.d
 actor.grant :type plugin:service :role -type role service-user :name transform.definition.update
 actor.grant :type plugin:service :role -type role service-user :name transform.describe
 actor.grant :type plugin:service :role -type role service-user :name transform.destroy
+actor.grant :type plugin:service :role -type role service-user :name transform.destroy.all
 actor.grant :type plugin:service :role -type role service-user :name transform.execute
 actor.grant :type plugin:service :role -type role service-user :name transform.list
 actor.grant :type plugin:service :role -type role service-user :name transform.log
