@@ -1,0 +1,1 @@
+added service: transform.destroy.all.
