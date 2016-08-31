@@ -53,7 +53,11 @@ public class KeplerTransformDefinition extends TransformDefinition {
                     String name = element.value("@name");
                     String value = element.value("@value");
                     DataType dtype = DataType.STRING;
-                    if (klass.equals("ptolemy.data.expr.StringParameter")) {
+
+                    
+                    if (klass.equals("ptolemy.data.expr.FileParameter")) {
+                        dtype = DataType.FILE;
+                    } else if (klass.equals("ptolemy.data.expr.StringParameter")) {
                         if (value != null) {
                             if (value.equalsIgnoreCase("true") || value.equalsIgnoreCase("false")) {
                                 dtype = DataType.BOOLEAN;

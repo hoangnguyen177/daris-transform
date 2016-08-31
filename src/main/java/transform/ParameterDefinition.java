@@ -22,7 +22,7 @@ public class ParameterDefinition {
      */
     public static enum DataType {
 
-        STRING, BOOLEAN, INTEGER, LONG, FLOAT, DOUBLE;
+        FILE, STRING, BOOLEAN, INTEGER, LONG, FLOAT, DOUBLE;
 
         @Override
         public String toString() {
