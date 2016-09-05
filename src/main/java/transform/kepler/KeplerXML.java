@@ -74,6 +74,15 @@ public class KeplerXML {
         }
     }
 
+    public KeplerXML(String contents) throws Throwable {
+        XmlDoc.setValidateDTD(false);
+        _de = new XmlDoc().parse(contents);
+        if (_de == null) {
+            throw new Exception("Failed to parse Kepler transform definition.");
+        }
+        _srcMimeType = MimeTypes.TEXT_XML;
+    }
+  
     public KeplerXML(File f) throws Throwable {
         this(new BufferedInputStream(new FileInputStream(f)));
     }
